@@ -13,3 +13,14 @@ ubuntu@rroberts-T14:~/WSL/CRPD$ docker load -i junos-routing-crpd-amd64-docker-2
 f8ece8aa5bdf: Loading layer  467.8MB/467.8MB
 Loaded image: crpd:22.3R1.11
 ```
+
+You will now have your cRPD image stored in the local docker repo. You can then start the container.
+
+```
+ubuntu@rroberts-T14:~/WSL/CRPD$ docker image ls crpd*
+REPOSITORY   TAG         IMAGE ID       CREATED        SIZE
+crpd         22.3R1.11   5dfdda6ea2de   2 months ago   461MB
+
+docker run -it --rm -d --name crpd crpd:22.3R1.11
+
+```
