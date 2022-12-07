@@ -68,18 +68,6 @@ Ubuntu 20.04 LTS has been installed.
 Launching Ubuntu 20.04 LTS...
 ```
 
-  122  sudo apt install docker-ce docker-ce-cli containerd.io
-  123  sudo usermod -aG docker $USER
-  124  DOCKER_DIR=/mnt/wsl/shared-docker
-  125  mkdir -pm o=,ug=rwx "$DOCKER_DIR"
-  126  sudo chgrp docker "$DOCKER_DIR"
-  127  sudo mkdir /etc/docker
-  curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/rel
-ease/stable.txt)/bin/linux/amd64/kubectl
-  curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.25.0/bin/linux/amd64/kubectl
-  chmod +x ./kubectl
-  sudo mv ./kubectl /usr/local/bin/kubectl
-
 ## Kubectl, Docker and Kind installation
 
 readme
@@ -136,4 +124,16 @@ Possible completions:
   accept-remote-nexthop  Allow import policy to specify a non-directly connected next-hop
   add-path-display-ipv4-address  Display add-path path-id in IPv4 address format
   [...]
+```
+
+```
+ubuntu@rroberts-T14:~/WSL/WSL2-kind-crpd/code$ docker image list
+REPOSITORY     TAG         IMAGE ID       CREATED         SIZE
+ubuntu         latest      a8780b506fa4   5 weeks ago     77.8MB
+kindest/node   <none>      d8644f660df0   6 weeks ago     898MB
+crpd           22.3R1.11   5dfdda6ea2de   2 months ago    461MB
+hello-world    latest      feb5d9fea6a5   14 months ago   13.3kB
+kindest/node   <none>      32b8b755dee8   18 months ago   1.12GB
+kindest/node   v1.20.0     ad1bcd4daa66   24 months ago   1.33GB
+ubuntu@rroberts-T14:~/WSL/WSL2-kind-crpd/code$ kind load docker-image crpd:22.3R1.11 
 ```
