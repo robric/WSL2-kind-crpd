@@ -1,5 +1,17 @@
 # WSL2-kind-crpd
 
+## WSL2 installation
+
+Before starting, make sure you have the latest version of WSL2 installed. WSL2 is not enabled by default on windows, so you need to turn it on in the following menu: "Control Pannel -> Programs and Features -> Turn windows features on or off".
+
+<img width="557" alt="image" src="https://user-images.githubusercontent.com/21667569/206169945-6951d695-4fe0-4ac9-a689-5c9f7a3bb667.png">
+
+Then check both "Windows Subsystem for Linux" and "Virtual Machine Platform".
+
+<img width="346" alt="image" src="https://user-images.githubusercontent.com/21667569/206170202-e577bc12-38e8-4d93-a399-4a0623cd23f3.png">
+
+## Kubectl, Docker and Kind installation
+
 readme
 ```console
 ubuntu@rroberts-T14:~/WSL/CRPD$ curl -o junos-routing-crpd-amd64-docker-22.3R1.11.tgz
