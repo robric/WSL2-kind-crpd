@@ -10,6 +10,65 @@ Then check both "Windows Subsystem for Linux" and "Virtual Machine Platform".
 
 <img width="346" alt="image" src="https://user-images.githubusercontent.com/21667569/206170202-e577bc12-38e8-4d93-a399-4a0623cd23f3.png">
 
+If you're in recent windows, you should have ubuntu 20.04 running (which is the assumption for the following).
+
+In powershell, just execute the wsl command.
+```(console)
+PS C:\Users\rroberts> wsl
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@rroberts-P50:/mnt/c/Users/rroberts$ cat /etc/os-release
+NAME="Ubuntu"
+VERSION="20.04 LTS (Focal Fossa)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 20.04 LTS"
+VERSION_ID="20.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=focal
+UBUNTU_CODENAME=focal
+ubuntu@rroberts-P50:/mnt/c/Users/rroberts$
+```
+If you have an older Windows install, you can easily upgrade your installation via powershell in administrator mode.
+
+```(console)
+PS C:\WINDOWS\system32> wsl -l -v
+  NAME      STATE           VERSION
+* Legacy    Running         1
+
+PS C:\WINDOWS\system32> wsl --update
+Checking for updates...
+Downloading updates...
+Installing updates...
+This change will take effect on the next full restart of WSL. To force a restart, please run 'wsl --shutdown'.
+Kernel version: 5.10.102.1
+PS C:\WINDOWS\system32> wsl --shutdown
+PS C:\WINDOWS\system32> wsl --list --online
+The following is a list of valid distributions that can be installed.
+Install using 'wsl --install -d <Distro>'.
+
+NAME            FRIENDLY NAME
+Ubuntu          Ubuntu
+Debian          Debian GNU/Linux
+kali-linux      Kali Linux Rolling
+openSUSE-42     openSUSE Leap 42
+SLES-12         SUSE Linux Enterprise Server v12
+Ubuntu-16.04    Ubuntu 16.04 LTS
+Ubuntu-18.04    Ubuntu 18.04 LTS
+Ubuntu-20.04    Ubuntu 20.04 LTS
+
+PS C:\WINDOWS\system32> wsl --install -d  Ubuntu-20.04
+Downloading: Ubuntu 20.04 LTS
+Installing: Ubuntu 20.04 LTS
+Ubuntu 20.04 LTS has been installed.
+Launching Ubuntu 20.04 LTS...
+
+```
+
 ## Kubectl, Docker and Kind installation
 
 readme
