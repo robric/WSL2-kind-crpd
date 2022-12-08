@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: crpd-ds
+  labels:
+    app: crpd-ds
+spec:
+  selector:
+    matchLabels:
+      app: crpd-app
+  template:
+    metadata:
+      labels:
+        app: crpd-app
+    spec:
+      hostNetwork: true
+#      nodeSelector:
+      containers:
+        - name: crpd
+          image: crpd:22.3R1.11
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 179
+          - containerPort: 40051
+          securityContext:
+            privileged: true
+  
