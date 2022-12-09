@@ -68,18 +68,6 @@ Ubuntu 20.04 LTS has been installed.
 Launching Ubuntu 20.04 LTS...
 ```
 
-  122  sudo apt install docker-ce docker-ce-cli containerd.io
-  123  sudo usermod -aG docker $USER
-  124  DOCKER_DIR=/mnt/wsl/shared-docker
-  125  mkdir -pm o=,ug=rwx "$DOCKER_DIR"
-  126  sudo chgrp docker "$DOCKER_DIR"
-  127  sudo mkdir /etc/docker
-  curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/rel
-ease/stable.txt)/bin/linux/amd64/kubectl
-  curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.25.0/bin/linux/amd64/kubectl
-  chmod +x ./kubectl
-  sudo mv ./kubectl /usr/local/bin/kubectl
-
 ## Kubectl, Docker and Kind installation
 
 readme
@@ -136,4 +124,32 @@ Possible completions:
   accept-remote-nexthop  Allow import policy to specify a non-directly connected next-hop
   add-path-display-ipv4-address  Display add-path path-id in IPv4 address format
   [...]
+```
+
+```
+ubuntu@rroberts-T14:~/WSL/WSL2-kind-crpd/code$ docker image list
+REPOSITORY     TAG         IMAGE ID       CREATED         SIZE
+ubuntu         latest      a8780b506fa4   5 weeks ago     77.8MB
+kindest/node   <none>      d8644f660df0   6 weeks ago     898MB
+crpd           22.3R1.11   5dfdda6ea2de   2 months ago    461MB
+hello-world    latest      feb5d9fea6a5   14 months ago   13.3kB
+kindest/node   <none>      32b8b755dee8   18 months ago   1.12GB
+kindest/node   v1.20.0     ad1bcd4daa66   24 months ago   1.33GB
+ubuntu@rroberts-T14:~/WSL/WSL2-kind-crpd/code$ kind load docker-image crpd:22.3R1.11 
+
+
+ubuntu@rroberts-T14:~/WSL/WSL2-kind-crpd/code$ docker exec -it  kind-worker  crictl images list
+IMAGE                                      TAG                  IMAGE ID            SIZE
+docker.io/kindest/kindnetd                 v20221004-44d545d1   d6e3e26021b60       25.8MB
+docker.io/kindest/local-path-helper        v20220607-9a4d8d2a   d2f902e939cc3       2.86MB
+docker.io/kindest/local-path-provisioner   v0.0.22-kind.0       4c1e997385b8f       17.4MB
+docker.io/library/crpd                     22.3R1.11            5dfdda6ea2de5       468MB
+registry.k8s.io/coredns/coredns            v1.9.3               5185b96f0becf       14.8MB
+registry.k8s.io/etcd                       3.5.4-0              a8a176a5d5d69       102MB
+registry.k8s.io/kube-apiserver             v1.25.3              4bc1b1e750e34       76.5MB
+registry.k8s.io/kube-controller-manager    v1.25.3              580dca99efc3b       64.5MB
+registry.k8s.io/kube-proxy                 v1.25.3              86063cd68dfc9       63.3MB
+registry.k8s.io/kube-scheduler             v1.25.3              5225724a11400       51.9MB
+registry.k8s.io/pause                      3.7                  221177c6082a8       311kB
+ubuntu@rroberts-T14:~/WSL/WSL2-kind-crpd/code$ 
 ```
