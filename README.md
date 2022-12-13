@@ -153,3 +153,10 @@ registry.k8s.io/kube-scheduler             v1.25.3              5225724a11400   
 registry.k8s.io/pause                      3.7                  221177c6082a8       311kB
 ubuntu@rroberts-T14:~/WSL/WSL2-kind-crpd/code$ 
 ```
+
+## Useful links
+
+- docker networking:
+https://docs.docker.com/engine/reference/commandline/network_create/
+
+
